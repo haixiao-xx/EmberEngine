@@ -1,0 +1,3 @@
+file(GLOB_RECURSE ENGINE_SCR *.cpp)
+add_library(Engine ${ENGINE_SCR})
+target_include_directories(Engine PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

@@ -1,0 +1,8 @@
+file(GLOB_RECURSE SANDBOX_SRC *.cpp)
+ADD_EXECUTABLE(Sandbox ${SANDBOX_SRC})
+
+#引擎头文件路径
+target_include_directories(Sandbox PRIVATE ${CMAKE_SOURCE_DIR}/Engine)
+
+#链接引擎库
+TARGET_LINK_LIBRARIES(Sandbox PRIVATE Engine)
