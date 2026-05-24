@@ -1,4 +1,5 @@
 #include"Window/GLFWWindow.h"
+#include"glad/glad.h"
 #include"GLFW/glfw3.h"
 
 #include<iostream>
@@ -15,6 +16,9 @@ namespace Engine
 	}
 	void GLFWWindow::OnUpdata()
 	{
+		glClearColor(0.1f, 0.1f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT);
+
 		glfwPollEvents();
 		glfwSwapBuffers(m_window);
 	}
@@ -48,6 +52,12 @@ namespace Engine
 			return;
 		}
 		glfwMakeContextCurrent(m_window);
+		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+		{
+			std::cout << "init glad failed." << std::endl;
+			return;
+		}
+
 		std::cout << "window created!" << std::endl;
 	}
 	void GLFWWindow::ShutDown()

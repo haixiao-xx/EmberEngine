@@ -1,8 +1,10 @@
 file(GLOB_RECURSE ENGINE_SCR *.cpp)
-add_library(Engine STATIC ${ENGINE_SCR})
+set(GLAD_SRC ${CMAKE_SOURCE_DIR}/thirdParty/GLAD/src/glad.c)
+add_library(Engine STATIC ${ENGINE_SCR} ${GLAD_SRC})
 target_include_directories(Engine PUBLIC 
     ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_SOURCE_DIR}/thirdParty/GLFW/include
+    ${CMAKE_SOURCE_DIR}/thirdParty/GLAD/include
 )
 target_link_libraries(Engine PUBLIC 
     ${CMAKE_SOURCE_DIR}/thirdParty/GLFW/lib/glfw3.lib
